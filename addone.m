@@ -16,11 +16,11 @@ for i=1:size(I)
         r=0;
         if size(find(AA==5))>0
             [AA r]=tenwater_break(AA,r);
-            w = w+(r-mod(r,3))/3;
+            w = w+floor(r/3);
         end
         state=addone(AA,water+w);
         if state==1
-            I(i)
+            disp([num2str(I(i)),' ',num2str(water) ,' ',num2str(r)])
             A
             break
         end
