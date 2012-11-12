@@ -14,9 +14,10 @@ else
     end
     for i = 1:size(a)
         A = A+jia(A,[a(i) b(i)]);
-        if size(find(A==5))~=0
-            [A r] = tenwater_break(A,r);
-        end
+        
+    end
+    if size(find(A==5))~=0
+        [A r] = tenwater_break(A,r);
     end
 end
 
