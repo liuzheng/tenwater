@@ -1,20 +1,29 @@
-function addone(A,water)
-for i=1:36
+function state=addone(A,water)
+I = find(A>=(5-water));
+state=0;
+for i=1:size(I)
     if sum(sum(A))==0
         java.lang.System.out.println('successful');
+        state=1;
         break
     elseif water==0
        % java.lang.System.out.println('fall');
         break
     else
-        A(i)=A(i)+1;
-        water=water-1;
+        AA=A;
+        AA(I(i))=A(I(i))+1;
+        w=-1;
         r=0;
-        if size(find(A==5))>0
-            [A r]=tenwater_break(A,r);
-            water = water+(r-mod(r,3))/3;
+        if size(find(AA==5))>0
+            [AA r]=tenwater_break(AA,r);
+            w = w+(r-mod(r,3))/3;
         end
-        addone(A,water);
+        state=addone(AA,water+w);
+        if state==1
+            I(i)
+            A
+            break
+        end
     end
 end
 end
